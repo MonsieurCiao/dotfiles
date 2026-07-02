@@ -14,9 +14,9 @@ function y() {
 fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
-if [[ -o interactive ]] && [ -z "$TMUX" ]; then
-  tmux attach || tmux new
-fi
+# if [[ -o interactive ]] && [ -z "$TMUX" ]; then
+#   tmux attach || tmux new
+# fi
 alias tn='tmux new-session -s'
 alias tl='tmux ls'
 alias ta='tmux a'
