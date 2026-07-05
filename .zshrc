@@ -14,6 +14,7 @@ function y() {
 fpath=(~/.zsh/completions $fpath)
 autoload -U compinit && compinit
 
+# automatically attach to tmux
 # if [[ -o interactive ]] && [ -z "$TMUX" ]; then
 #   tmux attach || tmux new
 # fi
@@ -22,3 +23,6 @@ alias tl='tmux ls'
 alias ta='tmux a'
 alias tk='tmux kill-ses -t'
 alias tks='tmux kill-server'
+
+alias gst='git status'
+alias lg='lazygit'
