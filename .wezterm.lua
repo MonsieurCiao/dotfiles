@@ -9,7 +9,7 @@ local config = wezterm.config_builder()
 
 --font
 config.font_size = 14
-config.font = wezterm.font("MonaspiceNe NFM")
+config.font = wezterm.font("0xProto Nerd Font Mono")
 
 --window
 config.enable_tab_bar = false
