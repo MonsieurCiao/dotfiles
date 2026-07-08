@@ -1,6 +1,24 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
+local function get_appearance(window)
+	local appearance = window:get_appearance()
+	if appearance:find("Dark") then
+		return "Tokyo Night" -- Replace with your preferred dark theme
+	else
+		return "Tokyo Night Day" -- Replace with your preferred light theme
+	end
+end
+
+wezterm.on("window-config-reloaded", function(window, pane)
+	local overrides = window:get_config_overrides() or {}
+	local scheme = get_appearance(window)
+	if overrides.color_scheme ~= scheme then
+		overrides.color_scheme = scheme
+		window:set_config_overrides(overrides)
+	end
+end)
+
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
@@ -20,7 +38,6 @@ config.macos_window_background_blur = 10
 config.debug_key_events = true
 
 --theme
-config.color_scheme = "Tokyo Night"
 
 --dead keys, and left option remains left option
 config.send_composed_key_when_left_alt_is_pressed = true
