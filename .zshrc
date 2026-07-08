@@ -1,14 +1,10 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export PATH=$PATH:/usr/local/bin
 export EDITOR=nvim
+export XDG_CONFIG_HOME="$HOME/dotfiles/.config"
 
 # zoxide config
 eval "$(zoxide init zsh)"
+
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
@@ -33,9 +29,8 @@ alias tks='tmux kill-server'
 alias gst='git status'
 alias lg='lazygit'
 alias ls="eza --icons=auto"
+alias tt="taskwarrior-tui"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #history setup
 HISTFILE=$HOME/.zhistory
@@ -48,6 +43,10 @@ setopt hist_verify
 # completion using arrow keys (based on history)
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#ohmyposh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/omp.toml)"
+fi
