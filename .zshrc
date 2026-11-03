@@ -22,7 +22,7 @@ autoload -U compinit && compinit
 # fi
 alias tn='tmux new-session -s'
 alias tl='tmux ls'
-alias ta='tmux a'
+alias ta='tmux a -t'
 alias tk='tmux kill-ses -t'
 alias tks='tmux kill-server'
 
@@ -50,3 +50,15 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/omp.toml)"
 fi
+
+# pnpm
+export PNPM_HOME="/Users/stellarc/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

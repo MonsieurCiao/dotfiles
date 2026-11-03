@@ -39,10 +39,16 @@ config.debug_key_events = true
 
 --theme
 
+--dim inactive panes
+config.inactive_pane_hsb = {
+	saturation = 0.9,
+	brightness = 0.6,
+}
+
 --dead keys, and left option remains left option
 config.send_composed_key_when_left_alt_is_pressed = true
 config.send_composed_key_when_right_alt_is_pressed = true
-config.use_dead_keys = true
+config.use_dead_keys = false
 config.use_ime = true
 config.keys = {
 	{ key = "n", mods = "OPT", action = wezterm.action.SendString("~") },
